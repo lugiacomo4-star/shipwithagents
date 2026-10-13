@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>shipwithagents — Claude Code, broken down</title>
+<meta name="description" content="Short, practical breakdowns of Claude Code, skills and agent workflows, tested on real work.">
+<meta property="og:title" content="shipwithagents">
+<meta property="og:description" content="Short, practical breakdowns of Claude Code, skills and agent workflows, tested on real work.">
+<meta name="theme-color" content="#0D0D0B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0D0D0B;--fg:#F2EFE8;--muted:#A9A59B;--dim:#8C887F;--line:#2A2925;--accent:#FF6A1F;--mono:'JetBrains Mono',ui-monospace,monospace}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg)}
+body{font-family:'Bricolage Grotesque',Georgia,serif;-webkit-font-smoothing:antialiased}
+main{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;padding:clamp(24px,4vw,56px) clamp(16px,5vw,80px)}
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:var(--muted)}
+.brand{display:flex;align-items:center;gap:10px;color:var(--fg)}
+.dot{width:10px;height:10px;background:var(--accent)}
+section{flex:1;display:flex;flex-direction:column;justify-content:center;gap:clamp(40px,6vh,72px);max-width:1280px;width:100%;margin:0 auto;padding:clamp(40px,6vh,64px) 0}
+.intro{display:flex;flex-direction:column;gap:24px;max-width:920px}
+.kicker{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+h1{margin:0;font-size:clamp(44px,7vw,104px);line-height:.96;font-weight:700;letter-spacing:-.035em}
+.lead{margin:0;max-width:620px;font-size:clamp(17px,1.6vw,21px);line-height:1.5;color:#C9C5BB}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));border-top:1px solid var(--line)}
+.item{display:flex;flex-direction:column;gap:12px;padding:24px 28px 8px 0}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--accent)}
+.title{font-size:22px;font-weight:500;line-height:1.25}
+.text{font-size:16px;line-height:1.5;color:var(--muted)}
+.cta{display:flex;align-items:center;flex-wrap:wrap;gap:20px}
+.btn{display:inline-flex;align-items:center;gap:12px;min-height:56px;padding:0 28px;text-decoration:none;font-family:var(--mono);font-size:15px;font-weight:500;letter-spacing:.02em;border:1px solid var(--accent);transition:transform .15s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:var(--accent);color:var(--bg)}
+.btn.secondary{color:var(--fg)}
+.note{font-family:var(--mono);font-size:13px;color:var(--dim)}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div class="brand"><span class="dot" aria-hidden="true"></span><span>shipwithagents</span></div>
+<span>claude code · skills · agents</span>
+</header>
+<section>
+<div class="intro">
+<div class="kicker">$ tested on real work</div>
+<h1>Claude Code, broken down. Shipped, not theorised.</h1>
+<p class="lead">Short, practical breakdowns of Claude Code, skills and agent workflows. Every one is run on a real job before it gets posted.</p>
+</div>
+<div class="grid">
+<div class="item"><div class="label">01 / CLAUDE CODE</div><div class="title">Commands and habits that save hours</div><div class="text">One feature per post, shown in under a minute, with the exact setup.</div></div>
+<div class="item"><div class="label">02 / SKILLS</div><div class="title">Skills you can copy today</div><div class="text">What each skill does, the file itself, and where it breaks.</div></div>
+<div class="item"><div class="label">03 / AGENT WORKFLOWS</div><div class="title">Agents doing real tasks, end to end</div><div class="text">Multi-step setups, the prompts behind them, and the actual results.</div></div>
+</div>
+<div class="cta">
+<a class="btn primary" href="https://x.com/shipwithagents">Follow on X<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<a class="btn secondary" href="https://www.instagram.com/shipwithagents">Follow on Instagram<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<span class="note">@shipwithagents · new breakdowns every week</span>
+</div>
+</section>
+</main>
+</body>
+</html>
