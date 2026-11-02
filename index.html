@@ -35,6 +35,11 @@ h1{margin:0;font-size:clamp(44px,7vw,104px);line-height:.96;font-weight:700;lett
 .btn:hover{transform:translateY(-2px)}
 .btn.primary{background:var(--accent);color:var(--bg)}
 .btn.secondary{color:var(--fg)}
+.latest{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:22px 26px;border:1px solid var(--line);text-decoration:none;color:var(--fg);transition:border-color .15s ease}
+.latest:hover{border-color:var(--accent)}
+.latest .t{font-size:clamp(20px,2.2vw,28px);font-weight:700;letter-spacing:-.01em}
+.latest .d{font-size:15px;color:var(--muted);margin-top:6px}
+.latest .go{font-family:var(--mono);font-size:14px;color:var(--accent);white-space:nowrap}
 .note{font-family:var(--mono);font-size:13px;color:var(--dim)}
 @media (prefers-reduced-motion:reduce){.btn{transition:none}}
 </style>
@@ -51,13 +56,14 @@ h1{margin:0;font-size:clamp(44px,7vw,104px);line-height:.96;font-weight:700;lett
 <h1>Claude Code, broken down. Shipped, not theorised.</h1>
 <p class="lead">Short, practical breakdowns of Claude Code, skills and agent workflows. Every one is run on a real job before it gets posted.</p>
 </div>
+<a class="latest" href="demos/moss-keeper/"><div><div class="label">LATEST BUILD</div><div class="t">The Moss Keeper</div><div class="d">An anime scene drawn entirely in code. 41 KB of HTML, zero video files.</div></div><span class="go">Watch it live →</span></a>
 <div class="grid">
 <div class="item"><div class="label">01 / CLAUDE CODE</div><div class="title">Commands and habits that save hours</div><div class="text">One feature per post, shown in under a minute, with the exact setup.</div></div>
 <div class="item"><div class="label">02 / SKILLS</div><div class="title">Skills you can copy today</div><div class="text">What each skill does, the file itself, and where it breaks.</div></div>
 <div class="item"><div class="label">03 / AGENT WORKFLOWS</div><div class="title">Agents doing real tasks, end to end</div><div class="text">Multi-step setups, the prompts behind them, and the actual results.</div></div>
 </div>
 <div class="cta">
-<a class="btn primary" href="https://x.com/shipwithagents">Follow on X<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<a class="btn primary" href="https://x.com/HxHoriwon">Follow on X<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
 <a class="btn secondary" href="https://www.instagram.com/shipwithagents">Follow on Instagram<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
 <span class="note">@shipwithagents · new breakdowns every week</span>
 </div>
