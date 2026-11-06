@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="One brain, three AIs: the shared memory setup behind the Galaxy reel.">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
+</head>
+<body>
+<title>Shared Brain Setup</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: one dark sky; a short hero with a live star field, then five numbered steps (a real sequence), a copyable rule, the honest result, and a follow line. Single dark look by choice: it is a night sky. */
+:root{
+  --sky:#07080c; --panel:#10131a; --line:#232836; --fg:#eef0f5; --muted:#9aa1b2; --dim:#5f6678;
+  --ember:#e9713b; --claude:#e9713b; --grok:#e6e6e6; --hermes:#c9a227; --you:#6fa8f0;
+  --f-d:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif; --f-b:"Figtree",system-ui,-apple-system,sans-serif; --f-m:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--sky);color:var(--fg);font-family:var(--f-b);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding-block:0 72px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:56px}
+.hero{position:relative;padding-block:72px 8px;display:flex;flex-direction:column;gap:18px}
+#sky{position:absolute;inset:0 -40px;width:calc(100% + 80px);height:100%;z-index:0;opacity:.9;pointer-events:none}
+.hero>*:not(canvas){position:relative;z-index:1}
+.eyebrow{font:600 13px var(--f-b);letter-spacing:.14em;text-transform:uppercase;color:var(--ember)}
+h1{font-family:var(--f-d);font-weight:800;font-size:clamp(44px,10vw,84px);line-height:.95;letter-spacing:-.025em;margin:0;text-wrap:balance}
+h1 em{font-style:normal;color:var(--ember)}
+.lede{color:var(--muted);font-size:19px;max-width:56ch;margin:0}
+.tally{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.tally span{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid var(--line);border-radius:999px;font:500 14px var(--f-m);font-variant-numeric:tabular-nums;color:var(--fg);background:rgba(16,19,26,.7)}
+.tally i{width:8px;height:8px;border-radius:50%}
+h2{font-family:var(--f-d);font-weight:800;font-size:clamp(28px,6vw,40px);line-height:1.05;letter-spacing:-.015em;margin:0 0 6px;text-wrap:balance}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:28px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:44px 1fr;gap:14px;counter-increment:s}
+.steps li::before{content:counter(s);font:800 30px/1 var(--f-d);color:var(--ember);padding-top:4px}
+.steps h3{margin:0 0 4px;font:700 20px/1.3 var(--f-b)}
+.steps p{margin:0;color:var(--muted);min-width:0}
+code,.mono{font-family:var(--f-m);font-size:.86em}
+p code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;color:var(--fg)}
+.ex{margin-top:10px;overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font:13.5px/1.7 var(--f-m);color:#cfd4df;white-space:pre}
+.ex b{color:var(--ember);font-weight:500}
+.rule{border:1px solid var(--ember);border-radius:14px;padding:18px;background:linear-gradient(180deg,rgba(233,113,59,.08),transparent)}
+.rule pre{margin:12px 0 0;white-space:pre-wrap;font:14px/1.7 var(--f-m);color:var(--fg)}
+.rbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.rbar strong{font:700 15px var(--f-b);letter-spacing:.02em}
+button{font:600 14px var(--f-b);color:var(--sky);background:var(--fg);border:0;border-radius:999px;padding:9px 16px;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:2px solid var(--ember);outline-offset:3px}
+.result{display:flex;flex-direction:column;gap:12px}
+.bar{display:grid;grid-template-columns:92px 1fr 48px;align-items:center;gap:12px;font:500 15px var(--f-b)}
+.bar .t{height:10px;border-radius:99px;background:var(--line);overflow:hidden}
+.bar .t span{display:block;height:100%;border-radius:99px}
+.bar .n{font:500 14px var(--f-m);text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+.lesson{font-family:var(--f-d);font-weight:800;font-size:clamp(24px,5vw,32px);line-height:1.15;margin:8px 0 0;text-wrap:balance}
+.lesson span{color:var(--ember)}
+.foot{border-top:1px solid var(--line);padding-top:24px;color:var(--muted);font-size:15px;display:flex;flex-direction:column;gap:6px}
+.foot a{color:var(--fg)}
+@media (prefers-reduced-motion:reduce){#sky{display:none}}
+</style>
+
+<div class="wrap">
+  <header class="hero">
+    <canvas id="sky" aria-hidden="true"></canvas>
+    <div class="eyebrow">Agentic OS · Season 1</div>
+    <h1>One brain.<br><em>Three AIs.</em></h1>
+    <p class="lede">The setup behind the Galaxy reel. Claude, Grok and Hermes write into the same memory, and a map shows who actually did the work.</p>
+    <div class="tally" aria-label="Current memory">
+      <span>195 memories</span><span>252 links</span><span>~69k words</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>The setup, in five steps</h2>
+    <ol class="steps">
+      <li><div><h3>One folder of facts</h3><p>Plain Markdown files, one per subject: <code>people/</code>, <code>projects/</code>, <code>topics/</code>. One fact per line. Any agent can read a text file, so nothing gets locked into one app.</p></div></li>
+      <li><div><h3>One door every agent can reach</h3><p>A single shared page (I use Notion) where any agent appends a line in the same format. Agents that can't touch your disk still get in this way.</p>
+        <div class="ex"><b>2026-11-03</b> · grok · work · Prefers HR and operations roles
+<b>2026-11-03</b> · hermes · tools · Runs on the Mac mini, reads ~/.hermes/memories</div></div></li>
+      <li><div><h3>One rule in every agent's instructions</h3><p>Paste the rule below into each agent's system prompt or project instructions. Same words for all of them.</p></div></li>
+      <li><div><h3>A sync that signs every line</h3><p>Every 6 hours a small job reads the door, drops bad lines (incomplete, or with card numbers, IBANs or passwords) and files each fact with the agent's name on it.</p></div></li>
+      <li><div><h3>A map that shows who wrote what</h3><p>Every file is a star, every link between files is a line, and the color is the author. The first time you look, you'll see which agent is pulling its weight.</p></div></li>
+    </ol>
+  </section>
+
+  <section class="rule" aria-labelledby="rt">
+    <div class="rbar"><strong id="rt">The rule, copy it as is</strong><button type="button" id="copy">Copy rule</button></div>
+<pre id="ruletext">MEMORY RULE
+When you learn something durable about me (a decision, a preference,
+a person, a deadline), write ONE line to the shared memory page:
+YYYY-MM-DD · your-name · topic · the fact
+- One fact per line. No guesses, only what I said or confirmed.
+- Never write passwords, card numbers, IBANs or ID numbers.
+- Before answering anything about me, read the memory first.</pre>
+  </section>
+
+  <section class="result" aria-labelledby="rs">
+    <h2 id="rs">What the map showed</h2>
+    <div class="bar"><span>Claude</span><div class="t"><span style="width:98.5%;background:var(--claude)"></span></div><span class="n">192</span></div>
+    <div class="bar"><span>Grok</span><div class="t"><span style="width:1.5%;background:var(--grok)"></span></div><span class="n">1</span></div>
+    <div class="bar"><span>Hermes</span><div class="t"><span style="width:1.5%;background:var(--hermes)"></span></div><span class="n">1</span></div>
+    <p class="lesson">Plugging an agent in is easy.<br><span>Making it write things down is the work.</span></p>
+  </section>
+
+  <footer class="foot">
+    <span>Built by Giacomo Lu with Claude Code. New episodes on X <a href="https://x.com/HxHoriwon">@HxHoriwon</a> and Instagram <a href="https://www.instagram.com/shipwithagents/">@shipwithagents</a>.</span>
+    <span class="mono">Numbers as of 6 Nov 2026.</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var b=document.getElementById('copy'),t=document.getElementById('ruletext');
+  b.addEventListener('click',function(){
+    var done=function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy rule'},1600)};
+    var sel=function(){var r=document.createRange();r.selectNodeContents(t);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected, press copy'};
+    try{navigator.clipboard.writeText(t.textContent).then(done,sel)}catch(e){sel()}
+  });
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var c=document.getElementById('sky'),x=c.getContext('2d'),S=[],W,H,dpr=Math.min(2,devicePixelRatio||1);
+  var cols=['#e9713b','#e9713b','#e9713b','#8ab4f8','#c9a7ff','#e6e6e6','#c9a227'];
+  function size(){W=c.clientWidth;H=c.clientHeight;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0);
+    S=[];for(var i=0;i<140;i++){var a=i*2.39996,r=Math.sqrt(i/140)*Math.min(W,H)*.62;S.push({a:a,r:r,s:Math.random()*1.6+.4,c:cols[i%cols.length],tw:Math.random()*6})}}
+  size();addEventListener('resize',size);
+  var t0=performance.now();
+  (function draw(now){var k=(now-t0)/1000;x.clearRect(0,0,W,H);var cx=W*.72,cy=H*.38;
+    for(var i=0;i<S.length;i++){var p=S[i],a=p.a+k*0.02*(1-p.r/(W+1)),px=cx+Math.cos(a)*p.r,py=cy+Math.sin(a)*p.r*.55;
+      x.globalAlpha=.35+.35*Math.sin(k*1.2+p.tw);x.fillStyle=p.c;x.beginPath();x.arc(px,py,p.s,0,6.283);x.fill()}
+    x.globalAlpha=1;requestAnimationFrame(draw)})(t0);
+})();
+</script>
+
+</body>
+</html>
